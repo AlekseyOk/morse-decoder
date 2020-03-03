@@ -46,23 +46,24 @@ function decode(expr) {
 		'**': 's'
 	}
 
-    let finalPhrase = [];
-    let data = expr.split('');
-    let numberOfSymbols = expr.length / 10;
-	
-	for (let i = 0; i < numberOfSymbols; i++) {
+let finalPhrase = [];
+let data = expr.split('');
+let numberOfSymbols = expr.length / 10;
 
-        let letter = [];
-        
-		for (let k = 0; k < 5; k++) {
-            letter.push(decodeMap[data.splice(0, 2).join('')]);
-        }
+for (let i = 0; i < numberOfSymbols; i++) {
 
-        let key = letter.join('');
+    let letter = [];
+    
+    for (let k = 0; k < 5; k++) {
+        letter.push(decodeMap[data.splice(0, 2).join('')]);
+    }
 
-		finalPhrase = finalPhrase + MORSE_TABLE[key];
-	}
-	return finalPhrase
+    let key = letter.join('');
+
+    finalPhrase = finalPhrase + MORSE_TABLE[key];
+}
+return finalPhrase
+
 }
 
 module.exports = {

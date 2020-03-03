@@ -1,4 +1,5 @@
 const MORSE_TABLE = {
+	'sssss': ' ',
     '.-':     'a',
     '-...':   'b',
     '-.-.':   'c',
@@ -38,9 +39,32 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+	const decodeMap = {
+		'00': '',
+		'10': '.',
+		'11': '-',
+		'**': 's'
+	}
+
+    let finalPhrase = [];
+    let data = expr.split('');
+    let numberOfSymbols = expr.length / 10;
+	
+	for (let i = 0; i < numberOfSymbols; i++) {
+
+        let letter = [];
+        
+		for (let k = 0; k < 5; k++) {
+            letter.push(decodeMap[data.splice(0, 2).join('')]);
+        }
+
+        let key = letter.join('');
+
+		finalPhrase = finalPhrase + MORSE_TABLE[key];
+	}
+	return finalPhrase
 }
 
 module.exports = {
-    decode
+	decode
 }

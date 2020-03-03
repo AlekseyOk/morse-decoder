@@ -62,6 +62,7 @@ for (let i = 0; i < numberOfSymbols; i++) {
 
     finalPhrase = finalPhrase + MORSE_TABLE[key];
 }
+
 return finalPhrase
 
 }
